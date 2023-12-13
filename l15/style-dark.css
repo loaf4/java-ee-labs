@@ -1,0 +1,48 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+h1, .dark-theme h2 {
+    color: #ddc;
+}
+
+.button {
+    background-color: #007BFF;
+    color: #000;
+}
+
+.ad {
+    margin-bottom: 40px;
+}
+
+.ad-title {
+    font-weight: bolder;
+}
+
+.ad-text {
+    color: #ccc;
+    font-size: larger;
+}
+
+.ad-username {
+    color: #ccc;
+    font-size: small;
+}
+
+.ad-time {
+    color: #e0dddd;
+    font-size: small;
+}
+
+.comment {
+    margin-left: 20px;
+}
+
+a {
+    color: #f6f6f6;
+}
+
+a:active {
+    color: #f59f9f;
+}

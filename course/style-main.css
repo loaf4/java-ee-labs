@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+#sidebar {
+    flex: 0 0 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.task-group {
+    margin-bottom: 20px;
+}
+
+.task-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.task-group button {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.task-input {
+    width: calc(100% - 30px);
+}
+
+.add-task-form {
+    margin-bottom: 20px;
+}
+
+.sub-tasks {
+    list-style: none;
+    padding: 0;
+    margin-left: 40px;
+}
+
+.sub-task-input {
+    width: calc(100% - 30px);
+}
+
+.add-sub-task-form {
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.task-group-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-group-form label {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.task-groups {
+    padding: 0;
+    list-style: none;
+}
+
+.task-group-form.active {
+    background-color: #e6e6e6;
+}
+
+#bottom-right-section {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#bottom-right-section label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#bottom-right-section input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#bottom-right-section button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#bottom-right-section button:hover {
+    background-color: #45a049;
+}
