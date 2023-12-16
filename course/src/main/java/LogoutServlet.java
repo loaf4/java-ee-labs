@@ -10,7 +10,6 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         session.invalidate();
-        getServletContext().removeAttribute("lists");
         response.sendRedirect(request.getContextPath() + "/login");
     }
 }

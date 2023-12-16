@@ -7,14 +7,14 @@ import java.util.Map;
 public class Task {
 
     private String text;
-    private Map<String, SubTask> subTasks;
+    private HashMap<String, SubTask> subTasks;
 
     public Task(String text) {
         this.text = text;
         this.subTasks = new HashMap<>();
     }
 
-    public Task(String text, Map<String, SubTask> subTasks) {
+    public Task(String text, HashMap<String, SubTask> subTasks) {
         this.text = text;
         this.subTasks = subTasks;
     }
@@ -37,24 +37,12 @@ public class Task {
         this.text = text;
     }
 
-    public Map<String, SubTask> getSubTasks() {
+    public HashMap<String, SubTask> getSubTasks() {
         return subTasks;
     }
 
-    public void setSubTasks(Map<String, SubTask> subTasks) {
+    public void setSubTasks(HashMap<String, SubTask> subTasks) {
         this.subTasks = subTasks;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Task list = (Task) obj;
-        return list.getText().equals(this.text);
     }
 }
 

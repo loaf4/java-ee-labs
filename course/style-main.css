@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Verdana, Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,15 +14,29 @@ body {
     overflow-y: auto;
 }
 
-#main-content {
+form.add-task-group-form {
+    margin-bottom: 20px;
+}
+
+div.task-groups {
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #7c8087;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+div.task-groups:hover {
+    background-color: #7c8087;
+}
+
+.main-content {
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
     position: relative;
-}
-
-.task-group {
-    margin-bottom: 20px;
 }
 
 .task-group ul {
@@ -31,7 +45,6 @@ body {
 }
 
 .task-group button {
-    margin-left: 5px;
     cursor: pointer;
 }
 
@@ -53,6 +66,10 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
+}
+
+.task-actions form {
+    margin-left: 5px;
 }
 
 .task-input {
@@ -78,6 +95,12 @@ body {
     margin-left: 40px;
 }
 
+.edit-task-form {
+    margin-bottom: 20px;
+    width: calc(100% - 30px);
+    margin-left: 40px;
+}
+
 .task-group-form {
     display: flex;
     align-items: center;
@@ -98,7 +121,7 @@ body {
     background-color: #e6e6e6;
 }
 
-#bottom-right-section {
+#bottom-right-section .share-form {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -115,7 +138,7 @@ body {
 
 #bottom-right-section label {
     display: block;
-    margin-bottom: 10px;
+    margin-right: 10px;
     color: #555;
 }
 

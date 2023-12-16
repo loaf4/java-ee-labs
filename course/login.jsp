@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,39 +9,39 @@
 <body>
 
 <div id="login-container">
-    <form action="/login" class="auth-form" id="register-form">
+    <form action="${pageContext.request.contextPath}/register" method="post" class="auth-form" id="register-form">
         <h2>Register</h2>
-        <label for="register-email">Email:</label>
-        <input type="email" id="register-email" name="register-email" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
 
-        <label for="register-password">Password:</label>
-        <input type="password" id="register-password" name="register-password" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
 
-        <button type="submit">Register</button>
+        <button type="submit">Sign up</button>
     </form>
 
     <div class="vertical-line"></div>
 
-    <form action="/register" class="auth-form" id="login-form">
+    <form action="${pageContext.request.contextPath}/login" method="post" class="auth-form" id="login-form">
         <h2>Login</h2>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" name="email" required>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" name="password" required>
 
-        <button type="submit">Login</button>
+        <button type="submit">Sign in</button>
     </form>
 </div>
 
 <% if (request.getParameter("error-auth") != null) { %>
     <script>
-        alert("Введены неверные данные")
+        alert("Invalid input")
     </script>
 <% } %>
 <% if (request.getParameter("error-reg") != null) { %>
     <script>
-        alert("Пользователь с таким email уже существует");
+        alert("User with typed email already exists");
     </script>
 <% } %>
 

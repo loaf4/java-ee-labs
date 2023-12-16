@@ -8,14 +8,10 @@
         <welcome-file>main.jsp</welcome-file>
     </welcome-file-list>
 
-<!--    <servlet>-->
-<!--        <servlet-name>Init</servlet-name>-->
-<!--        <servlet-class>InitServlet</servlet-class>-->
-<!--        <load-on-startup>0</load-on-startup>-->
-<!--    </servlet>-->
     <servlet>
         <servlet-name>Main</servlet-name>
         <servlet-class>MainServlet</servlet-class>
+        <jsp-file>/main.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -66,10 +62,10 @@
         <servlet-class>ShareServlet</servlet-class>
     </servlet>
 
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>Main</servlet-name>-->
-<!--        <url-pattern>/</url-pattern>-->
-<!--    </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/main.jsp</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>

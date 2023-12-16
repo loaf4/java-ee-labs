@@ -15,7 +15,7 @@ public class DeleteSubTaskServlet extends HttpServlet {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected synchronized void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
@@ -26,7 +26,6 @@ public class DeleteSubTaskServlet extends HttpServlet {
 
             user.getLists().get(list).getTasks().get(task).removeSubTask(subTask);
             DataIO.writeData((HashMap<String, User>)getServletContext().getAttribute("users"));
-
         }
 
         response.sendRedirect(request.getContextPath());

@@ -1,7 +1,9 @@
 import org.example.Task;
 import org.example.TaskList;
 import org.example.User;
+import org.example.io.DataIO;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,22 +18,10 @@ import java.util.Map;
 public class MainServlet extends HttpServlet {
 
     @Override
-    @SuppressWarnings("unchecked")
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession(false);
-
-        if (session == null) {
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Test</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>aslkdjflkasjfdjlasf</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            response.sendRedirect(request.getContextPath() + "/login");
+    public void init() {
+        if (getServletContext().getAttribute("users") == null) {
+            Map<String, User> users = DataIO.readData();
+            getServletContext().setAttribute("users", users);
         }
     }
 }

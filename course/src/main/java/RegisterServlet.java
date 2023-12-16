@@ -8,25 +8,46 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.example.User;
+import org.example.io.DataIO;
 
 public class RegisterServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void init() {
+        if (getServletContext().getAttribute("users") == null) {
+            Map<String, User> users = DataIO.readData();
+            getServletContext().setAttribute("users", users);
+        }
+    }
+
+    @Override
+    protected synchronized void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         User user;
         Map<String, User> users = (HashMap<String, User>) getServletContext().getAttribute("users");
-        if ((user = checkExistingUser(users, email, password)) == null
+        if (users != null
                 && email != null
-                && password != null) {
+                && password != null
+                && (user = checkExistingUser(users, email, password)) == null) {
             email = email.trim();
             password = password.trim();
+
             user = new User(email, password);
             users.put(email, user);
-            response.sendRedirect("/login?email" + email + "&password" + password);
+            DataIO.writeData(users);
+
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user", user);
+            session.setAttribute("lists", user.getLists());
+            response.sendRedirect(request.getContextPath());
+//            request.getRequestDispatcher("/main.jsp").forward(request, response);
         } else {
-            response.sendRedirect(request.getContextPath() + "/login?error-reg");
+            if (users == null) {
+                response.sendRedirect(request.getContextPath() + "/login?users-null");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/login?error-reg");
+            }
         }
     }
 
@@ -36,11 +57,9 @@ public class RegisterServlet extends HttpServlet {
     }
 
     private User checkExistingUser(Map<String, User> users, String email, String password) {
-        if (users.containsKey(email)) {
-            User u = users.get(email);
-            if (u.getPassword().equals(password)) {
-                return u;
-            }
+        User u;
+        if (users != null && (u = users.get(email)) != null) {
+            return u;
         }
         return null;
     }

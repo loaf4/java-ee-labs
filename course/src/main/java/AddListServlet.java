@@ -17,7 +17,7 @@ public class AddListServlet extends HttpServlet {
 
     @Override
     @SuppressWarnings("unchecked")
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected synchronized void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
